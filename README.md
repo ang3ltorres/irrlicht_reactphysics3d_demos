@@ -1,5 +1,4 @@
-# irrlicht_reactphysics3d_demos
-Irrlicht ReactPhysics3D demos.
+Irrlicht and ReactPhysics3D integration demos.
 
 # Prerequisites
 Irrlicht and ReactPhysics3D binaries.
