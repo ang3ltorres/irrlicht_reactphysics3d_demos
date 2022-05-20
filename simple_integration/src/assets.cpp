@@ -71,8 +71,12 @@ Box::Box(irr::scene::ISceneManager* smgr, rp3d::PhysicsCommon* physicsCommon,
 {
 	body = world->createRigidBody(rp3d::Transform(pos, rp3d::Quaternion::identity()));
 	shape = physicsCommon->createBoxShape(rp3d::Vector3(size.x / 2.0f, size.y / 2.0f, size.z / 2.0f));
-	body->addCollider(shape, rp3d::Transform::identity());
+	collider = body->addCollider(shape, rp3d::Transform::identity());
 	body->setType(rp3d::BodyType::DYNAMIC);
+	rp3d::Material& material = collider->getMaterial();
+	material.setBounciness(0.1f);
+	material.setFrictionCoefficient(20);
+	material.setMassDensity(0);
 
 	this->node = smgr->addCubeSceneNode(1, nullptr, -1, vector3df(0, 0, 0), vector3df(0, 0, 0), vector3df(size.x, size.y, size.z));
 	this->node->setMaterialFlag(EMF_LIGHTING, true);
